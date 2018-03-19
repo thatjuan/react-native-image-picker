@@ -212,6 +212,18 @@ RCT_EXPORT_METHOD(showImagePicker:(NSDictionary *)options callback:(RCTResponseS
             showPickerViewController();
         }];
     }
+
+    // Some storage options apply globally. Set them here.
+    if ([self.options objectForKey:@"storageOptions"] && [[self.options objectForKey:@"storageOptions"] isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *storageOptions = [self.options objectForKey:@"storageOptions"];
+
+        if ([[storageOptions objectForKey:@"skipCompression"] boolValue]) { // iOS 11+
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 11.0) {
+                [self.picker setVideoExportPreset: AVAssetExportPresetPassthrough];
+                [self.picker setImageExportPreset: UIImagePickerControllerImageURLExportPresetCurrent];
+            }
+        }
+    }
 }
 
 - (NSString * _Nullable)originalFilenameForAsset:(PHAsset * _Nullable)asset assetType:(PHAssetResourceType)type {

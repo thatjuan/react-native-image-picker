@@ -175,6 +175,7 @@ var options = {
   ],
   storageOptions: {
     skipBackup: true,
+    skipCompression: true,
     path: 'images'
   }
 };
@@ -253,6 +254,7 @@ allowsEditing | OK | - | bool - enables built in iOS functionality to resize the
 noData | OK | OK | If true, disables the base64 `data` field from being generated (greatly improves performance on large photos)
 storageOptions | OK | OK | If this key is provided, the image will be saved in your app's `Documents` directory on iOS, or your app's `Pictures` directory on Android (rather than a temporary directory)
 storageOptions.skipBackup | OK | - | If true, the photo will NOT be backed up to iCloud
+storageOptions.skipCompression | OK | - | If true, the compression step will be skipped for videos, and photos will be saved without JPEG compression. (iOS11+)
 storageOptions.path | OK | - | If set, will save the image at `Documents/[path]/` rather than the root `Documents`
 storageOptions.cameraRoll | OK | OK | If true, the cropped photo will be saved to the iOS Camera Roll or Android DCIM folder.
 storageOptions.waitUntilSaved | OK | - | If true, will delay the response callback until after the photo/video was saved to the Camera Roll. If the photo or video was just taken, then the file name and timestamp fields are only provided in the response object when this AND `cameraRoll` are both true.

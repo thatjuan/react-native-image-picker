@@ -45,6 +45,7 @@ declare module "react-native-image-picker" {
 
     interface StorageOptions {
         skipBackup?: boolean;
+        skipCompression?: boolean;
         path?: string;
         cameraRoll?: boolean;
         waitUntilSaved?: boolean;

@@ -45,6 +45,7 @@ export type Options = {
 
 export type StorageOptions = {
     skipBackup?: boolean;
+    skipCompression?: boolean;
     path?: string;
     cameraRoll?: boolean;
     waitUntilSaved?: boolean;
